@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .chat-box { width: 600px; margin: auto; border: 1px solid #ccc; padding: 20px; }
+        .message { margin-bottom: 10px; }
+        .user { font-weight: bold; color: blue; }
+        .bot { font-weight: bold; color: green; }
+        .math { font-family: 'Courier New', monospace; }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <h2>Simple Math Chatbot</h2>
+        <div>
+            {% for speaker, message in chat_history %}
+                <div class="message">
+                    <span class="{{ 'user' if speaker == 'You' else 'bot' }}">{{ speaker }}:</span>
+                    <span class="math">{{ message | safe }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <form method="POST">
+            <input type="text" name="message" placeholder="Type LaTeX (e.g., $$a^2 + b^2 = c^2$$)" required style="width: 80%;">
+            <input type="submit" value="Send">
+        </form>
+    </div>
+</body>
+</html>
