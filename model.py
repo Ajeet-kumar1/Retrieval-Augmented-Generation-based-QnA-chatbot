@@ -7,8 +7,8 @@ from utils import url
 
 def inference(url, prompt):
     payload = {
-        "model": 'llama1',
-        #"model": 'deepseek-r1:1.5b',
+        #"model": 'llama1',
+        "model": 'deepseek-r1:1.5b',
         "prompt": prompt,
         "temperature": 0.5,
         "max_tokens": 10
