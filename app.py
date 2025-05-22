@@ -1,3 +1,4 @@
+import os
 import ollama
 import threading
 import webbrowser
@@ -7,6 +8,9 @@ from flask import Flask, request, render_template, session, redirect, url_for
 
 
 pdf_path = input("Enter the pdf path: ")
+
+
+#pdf_path = os.getenv("PDF_PATH", "default.pdf")
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Required for session
