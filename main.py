@@ -1,18 +1,18 @@
 import ollama
+import threading
+import webbrowser
 from pdf_process import split_documents, load_pdf_documents
 from faiss_process import create_vector_store, retrieve_context
 from flask import Flask, request, render_template, session, redirect, url_for
-import threading
-import webbrowser
+
 
 pdf_path = input("Enter the pdf path: ")
-#pdf_path = r"C:\Users\Ajeet\Downloads\attention-is-all-you-need.pdf"
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Required for session
 
 
-# 6. Generate answer using Ollama (unchanged)
+# Generate answer using Ollama (unchanged)
 def generate_answer_with_ollama(query, context):
     formatted_context = "\n".join(context)
     
